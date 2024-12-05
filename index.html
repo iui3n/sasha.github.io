@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Data Viewer</title>
+</head>
+<body>
+    <h1>JSON Data</h1>
+    <pre id="data"></pre>
+    <script>
+        async function fetchData() {
+            try {
+                const response = await fetch('https://mverse-api.nexon.com/social/v1/profile/20372100000393674');
+                const data = await response.json();
+                document.getElementById('data').textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('data').textContent = 'Error fetching data: ' + error.message;
+            }
+        }
+        fetchData();
+    </script>
+</body>
+</html>
